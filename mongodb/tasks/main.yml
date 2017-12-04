@@ -1,9 +1,5 @@
 ---
 # tasks file for mongodb
-- name: Install Mongodb
-  yum:
-    name: mongodb-org
-    state: present
 
 - name: Add repository
   yum_repository:
@@ -12,3 +8,8 @@
     baseurl: https://repo.mongodb.org/yum/redhat/6/mongodb-org/3.4/x86_64/
     gpgkey: https://www.mongodb.org/static/pgp/server-3.4.asc
     gpgcheck: yes
+
+- name: Install Mongodb
+  yum:
+    name: mongodb-org
+    state: present
