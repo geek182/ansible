@@ -16,7 +16,7 @@
 
 - name: Config Mongodb standalone without auth
   template:
-    src: "{{ role_path }}/template/mongodb.conf-standalone-without-auth.j2"
+    src: "{{ role_path }}/templates/mongodb.conf-standalone-without-auth.j2"
     dest: "/etc/mongod.conf"
     ower: root
     group: root
