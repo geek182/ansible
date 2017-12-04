@@ -18,7 +18,7 @@
   template:
     src: "{{ role_path }}/templates/mongodb.conf-standalone-without-auth.j2"
     dest: "/etc/mongod.conf"
-    ower: root
+    owner: root
     group: root
     mode: 644
   notify: restart mongod
