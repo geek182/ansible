@@ -1,0 +1,8 @@
+---
+#TO CALL ansible-playbook custom-role.yml -e roles=NAME-OF-ROLE
+- hosts: localhost
+  connection: local
+  become: yes
+  become_method: sudo
+  roles:
+    - { role : "{{ roles }}" }
