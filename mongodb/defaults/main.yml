@@ -6,4 +6,4 @@ mongo_log_path: "/app/mongodb/logs/mongod.log"
 mongo_port: 27017
 mongo_logs_path: "/app/mongodb/logs"
 mongo_data_path: "/app/mongodb/data"
-version_os: {{ ansible_distribution_major_version }}
+version_os: "{{ ansible_distribution_major_version }}"
