@@ -7,5 +7,4 @@
 
 - name: Install php-agent from Newrelic
   yum:
-    name: "newrelic-php"
-    
+    name: "newrelic-php5"
