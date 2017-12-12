@@ -8,3 +8,11 @@
 - name: Install php-agent from Newrelic
   yum:
     name: "newrelic-php5"
+
+- name: Copy config file newrelic.php
+  template:
+    src : newrelic.ini.j2
+    dest: /etc/php.d/newrelic.ini
+    force: yes
+    owner: root
+    group: root
