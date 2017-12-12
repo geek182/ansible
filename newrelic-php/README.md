@@ -20,12 +20,16 @@ A list of other roles hosted on Galaxy should go here, plus any details in regar
 
 Example Playbook
 ----------------
+Using :
+ansible-playbook custom-role.yml -e roles=newrelic-php -e "app_license_key=123 app_name=SuperApp"
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
     - hosts: servers
       roles:
          - { role: username.rolename, x: 42 }
+
+
 
 License
 -------
