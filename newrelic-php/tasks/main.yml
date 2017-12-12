@@ -1,2 +1,11 @@
 ---
 # tasks file for newrelic-php
+- name: Add repo from NewRelic
+  yum: 
+    name: http://yum.newrelic.com/pub/newrelic/el5/x86_64/newrelic-repo-5-3.noarch.rpm
+    state: present
+
+- name: Install php-agent from Newrelic
+  yum:
+    name: "newrelic-php"
+    
