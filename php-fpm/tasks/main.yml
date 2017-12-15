@@ -1,0 +1,12 @@
+---
+# tasks file for php-fpm
+- name: Install PHP-FPM 
+  yum:
+    name: "php{{ version }}-fpm"
+    state: present
+
+- name: Base packages for php
+  yum:
+    name: "{{ item }}"
+    state: present
+    with_items: "{{ php_base_packages }}"
