@@ -1,10 +1,10 @@
 ---
 # tasks file for php-fpm
 # Setup/install tasks.
-- include: setup-Amazon-Linux.yml
+- include_tasks: setup-Amazon-Linux.yml
   when: ansible_distribution == 'Amazon'
 
-- include: setup-RedHat.yml
+- include_tasks: setup-RedHat.yml
   when: ansible_distribution == 'CentOS'
 
 
