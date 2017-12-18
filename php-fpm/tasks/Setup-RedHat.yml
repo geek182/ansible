@@ -12,7 +12,8 @@
 
 - name: Install PHP-FPM 
   yum:
-    name: "php{{ version }}-fpm"
+  #example of name php71-php-fpm
+    name: "php{{ version }}-php-fpm" 
     state: present
 
 # - name: Base packages for php
