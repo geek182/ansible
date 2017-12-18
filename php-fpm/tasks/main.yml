@@ -5,12 +5,9 @@
   when: ansible_distribution == 'Amazon'
 
 - include: setup-RedHat.yml
-  when: ansible_distribution == 'RedHat'
+  when: ansible_distribution == 'CentOS'
 
-- name: Install PHP-FPM 
-  yum:
-    name: "php{{ version }}-fpm"
-    state: present
+
 
 # - name: Base packages for php
 #   yum:
