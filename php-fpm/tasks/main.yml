@@ -4,7 +4,7 @@
 - include_tasks: setup-Amazon-Linux.yml
   when: ansible_distribution == 'Amazon'
 
-- include_tasks: setup-RedHat.yml
+- include_tasks: Setup-RedHat.yml
   when: ansible_distribution == 'CentOS'
 
 
