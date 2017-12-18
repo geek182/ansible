@@ -1,12 +1,5 @@
 ---
 # tasks file for php-fpm
-# Setup/install tasks.
-- include: setup-Amazon-Linux.yml
-  when: ansible_distribution == 'Amazon'
-
-- include: setup-RedHat.yml
-  when: ansible_distribution == 'RedHat'
-
 - name: Install PHP-FPM 
   yum:
     name: "php{{ version }}-fpm"
