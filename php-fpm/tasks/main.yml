@@ -7,8 +7,6 @@
 - include_tasks: Setup-RedHat.yml
   when: ansible_distribution == 'CentOS'
 
-
-
 - name: Base packages for php
   yum:
     name: "{{ item }}"
