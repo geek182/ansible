@@ -1,3 +1,5 @@
 ---
 # vars file for php-fpm
 image-os: "{{ ansible_distribution }}"
+php_base_packages:
+  - php{{ version }}
