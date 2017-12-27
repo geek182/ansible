@@ -1,0 +1,38 @@
+---
+# tasks file for nginx
+- name: Nginx repo
+  yum_repository:
+    name: nginx repo
+    description: Nginx repo
+    baseurl: http://nginx.org/packages/centos/{{ ansible_distribution_major_version }}/$basearch/
+
+- name: Install nginx
+  yum: 
+    name: nginx
+    state: installed
+
+- name: Copy main config file to nginx
+  template:
+    src: "{{ nginx_main_file | default('config-default-nginx.j2') }}"
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    mode: 0644
+  notify:
+    - reload nginx
+
+#before used this task you should upload config file to templates and pass a var config-file to role a default will use.
+- name: copy config file from template
+  template:
+    src: "{{ nginx_app_config }}"
+    dest: /etc/nginx/conf.d/{{ app_name }}.conf
+    owner: root
+    mode: 0644
+  notify: 
+    - reload nginx
+
+- name: Ensure nginx is started at boot
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+
