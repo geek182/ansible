@@ -11,8 +11,8 @@ Before use this role you should upload a config do your app see "Templates Files
 Role Variables
 --------------
 
-nginx_app_config: Specific config to your app
-nginx_main_file: Main config file to nginx, if not pass will use default "config-default-nginx.j2"
+nginx_app_config: Specific config to your app  
+nginx_main_file: Main config file to nginx, if not pass will use default "config-default-nginx.j2"  
 
 Dependencies
 ------------
@@ -37,5 +37,5 @@ BSD
 Author Information
 ------------------
 
-Leandro Azevedo
+Leandro Azevedo  
 @geek182
