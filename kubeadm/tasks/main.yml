@@ -1,0 +1,38 @@
+---
+- name: update the repositories cache
+  apt:
+    update_cache: yes
+
+- name: install some package
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "apt-transport-https"
+    - "curl"
+    - "docker.io"
+
+- name: Add an Apt signing key, uses whichever key is at the URL
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+
+- name: Add repo
+  apt_repository:
+    repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+    state: present
+    filename: 'kubernetes'
+
+- name: update again
+  apt:
+    update_cache: yes
+
+- name: install k8s tools
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "kubeadm"
+    - "kubelet"
+    - "kubectl"
+
