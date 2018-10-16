@@ -1,0 +1,13 @@
+---
+# tasks file for add-user
+- name: Add user
+  user:
+    name: test-user
+    comment: user created by ansible
+    group: test-group
+
+- name: "Set authorized key from file"
+  authorized_key:
+    user: test-user
+    state: present
+    key: key/path
