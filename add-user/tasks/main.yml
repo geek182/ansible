@@ -2,12 +2,15 @@
 # tasks file for add-user
 - name: Add user
   user:
-    name: test-user
+    name: "{{ user_name }}"
     comment: user created by ansible
-    group: test-group
+    group: "{{ item }}"
+  with_items:
+     - "{{ group_name }}"
 
 - name: "Set authorized key from file"
   authorized_key:
-    user: test-user
+    user: "{{ user_name }}"
     state: present
-    key: key/path
+    manage_dir: no
+    key: "{{ lookup('file', key_path ) }}"
