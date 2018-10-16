@@ -1,0 +1,7 @@
+---
+# vars file for add-user
+user_name: geek182
+group_name:
+  - games
+  - scanner
+
