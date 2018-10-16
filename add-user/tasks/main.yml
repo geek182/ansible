@@ -12,5 +12,4 @@
   authorized_key:
     user: "{{ user_name }}"
     state: present
-    manage_dir: no
     key: "{{ lookup('file', key_path ) }}"
