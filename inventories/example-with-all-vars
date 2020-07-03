@@ -1,0 +1,29 @@
+[all:vars]
+#Adding a different command to become sudo, it is applied to all hosts
+ansible_become_exe="/usr/bin/custom/sudo /usr/bin/su -"
+
+
+[host_zone_a]
+host1a
+host2a
+
+[host_zone_b]
+host1b
+host2b
+
+[host_zone_c]
+host1c
+host2c
+
+#All hosts belongs to a group called hosts_dt
+#dt stands for development and test.
+[hosts_dt:children]
+host_zone_a
+host_zone_b
+host_zone_c
+
+#Applying specific configuration, e.g: the user to ssh to this group
+# #{ANSIBLE-SSH-PASS-DT}# is a placeholder for a replace process that happens during deployment.
+[hosts_dt:vars]
+ansible_user="ansible_bootstrap_dt"
+ansible_ssh_pass="#{ANSIBLE-SSH-PASS-DT}#"
