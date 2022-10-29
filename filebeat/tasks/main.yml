@@ -1,0 +1,48 @@
+---
+
+- name: Download filebeat {{ version }}
+  get_url:
+    url: https://artifacts.elastic.co/downloads/filebeat/filebeat-{{ version }}-amd64.deb
+    dest: /tmp
+  when: ansible_os_family == "Debian"
+
+- name: Download filebeat {{ version }}
+  get_url:
+    url: https://artifacts.elastic.co/downloads/filebeat/filebeat-{{ version }}-x86_64.rpm
+    dest: /tmp
+  when: ansible_os_family == "RedHat" or ansible_distribution == "Amazon"
+
+- name: Install from a .deb package
+  apt:
+    deb: /tmp/filebeat-{{ version }}-amd64.deb
+  when: ansible_os_family == "Debian"
+
+- name: Install from a .rpm package
+  yum:
+    name: /tmp/filebeat-{{ version }}-x86_64.rpm
+    state: present
+  when: ansible_os_family == "RedHat" or ansible_distribution == "Amazon"
+
+- name: Start filebeat service, if not running
+  service:
+    name: filebeat
+    state: started
+
+- name: Enable service filebeat, and not touch the running state
+  service:
+    name: filebeat
+    enabled: yes
+
+- name: Remove the downloaded package
+  file:
+    path: /tmp/filebeat-{{ version }}-x86_64.rpm
+    state: absent
+  when: ansible_os_family == "RedHat" or ansible_distribution == "Amazon"
+  notify: restart filebeat
+
+- name: Remove the downloaded package
+  file:
+    path: /tmp/filebeat-{{ version }}-amd64.deb
+    state: absent
+  when: ansible_os_family == "Debian"
+  notify: restart filebeat
